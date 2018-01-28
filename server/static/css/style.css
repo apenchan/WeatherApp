@@ -1,0 +1,34 @@
+html, body{
+  padding: 0;
+  margin: 0;
+}
+.main-container{
+  overflow: hidden;
+  width: 100%;
+}
+.weather-boxes{
+  float: left;
+  padding: 30px;
+  margin: 2%;
+  border: solid 2px salmon;
+}
+.city-name{
+  font-size: 20px;
+}
+.comments-scroll{
+  overflow: auto;
+  height: 7em;
+  display: block;
+}
+.comment-box{
+  border: solid 1px #62A4E7;
+}
+.comment-text{
+  font-size: 2em;
+}
+.comment-username{
+  font-size: 1em;
+}
+.submit-comment{
+  margin: 2px;
+}
