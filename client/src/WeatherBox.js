@@ -19,11 +19,14 @@ class WeatherBox extends Component {
         <div className="city-name">
           {this.props.name}
         </div>
+        <div className="region-name">
+          {this.props.regionOrState}
+        </div>
         <div className="current-weather">
           {this.props.condition} <img src={this.props.conditionIcon} />
         </div>
         <div className="forecast">
-          <p className="forecast-text">The forecast prediection for tomorrow is:</p>
+          <p className="forecast-text">The forecast prediction for tomorrow is:</p>
           {this.props.forecast} {this.props.forecastText} <img src={this.props.forecastIcon} />
         </div>
         <CommentForm addComments={this.addComments}/>

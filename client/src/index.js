@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchForm from './SearchForm'
 import WeatherListBox from './WeatherListBox'
+import MainNav from './MainNav'
 
 // class App extends React.Component {
 //   render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
   searchCity(data){
     var params = {
       name: data.location.name,
+      regionOrState: data.location.region,
       condition: data.current.condition.text,
       conditionIcon: data.current.condition.icon,
       forecast: data.forecast.forecastday.date,
@@ -43,6 +45,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="main-container">
+      <div className="main-nav">
+        <MainNav />
+      </div>
       <div className="search-form">
         <SearchForm searchCity={this.searchCity}/>
       </div>

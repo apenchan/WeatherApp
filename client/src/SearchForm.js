@@ -31,7 +31,7 @@ class SearchForm extends Component {
       <div className="search-weather-container">
         <form onSubmit={this.handleSubmit}>
           <div className="search-input">
-            <label> Weather App </label>
+            {/* <label> Weather App </label> */}
             <input type="text" required="true" value={this.state.city} placeholder="Search a City" onChange={this.handleChange} />
           </div>
           <div className="search-button">

@@ -6,6 +6,17 @@ html, body{
   overflow: hidden;
   width: 100%;
 }
+.main-nav{
+  height: 70px;
+  background-color: #57A4F3;
+}
+.app-name{
+  margin-left: 3%;
+  float: left;
+}
+.search-form{
+  clear: left;
+}
 .weather-boxes{
   float: left;
   padding: 30px;
