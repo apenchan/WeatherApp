@@ -1,3 +1,7 @@
+@font-face{
+  font-family: "couture-bld.otf";
+  src: url("../fonts/couture-bld.otf");
+}
 html, body{
   padding: 0;
   margin: 0;
@@ -7,11 +11,19 @@ html, body{
   width: 100%;
 }
 .main-nav{
-  height: 70px;
-  background-color: #57A4F3;
+  position: relative;
+  height: 55px;
+  padding: 2px;
+  background-color: #7EB9F4;
 }
 .app-name{
+  position: absolute;
+  margin-top: 8px;
+  font-family: "couture-bld.otf";
+  color: #fff;
+  font-size: 20px;
   margin-left: 3%;
+  margin-top: -3px;
   float: left;
 }
 .search-form{
