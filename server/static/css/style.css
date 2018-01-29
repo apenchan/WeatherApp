@@ -19,15 +19,26 @@ html, body{
 .app-name{
   position: absolute;
   margin-top: 8px;
-  font-family: "couture-bld.otf";
+  font-family: "Helvetica";
   color: #fff;
   font-size: 20px;
   margin-left: 3%;
-  margin-top: -3px;
+  margin-top: -15px;
   float: left;
 }
 .search-form{
   clear: left;
+}
+.search-weather-container{
+  padding: 20px;
+  text-align: center;
+}
+.form-search-city{
+  display: inline-flex;
+}
+.input-city-name{
+  width: 350px;
+  height: 20px;
 }
 .weather-boxes{
   float: left;

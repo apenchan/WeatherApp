@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import FontAwesome from 'react-fontawesome'
 
 class SearchForm extends Component {
   constructor(props) {
@@ -29,13 +30,10 @@ class SearchForm extends Component {
   render() {
     return (
       <div className="search-weather-container">
-        <form onSubmit={this.handleSubmit}>
+        <form className="form-search-city" onSubmit={this.handleSubmit}>
           <div className="search-input">
-            {/* <label> Weather App </label> */}
-            <input type="text" required="true" value={this.state.city} placeholder="Search a City" onChange={this.handleChange} />
-          </div>
-          <div className="search-button">
-            <input type="submit" value="Submit"/>
+            <input className="input-city-name" type="text" required="true" value={this.state.city} placeholder="Search a City" onChange={this.handleChange} />
+          <FontAwesome onClick={this.handleSubmit} className="search-button" name='search' size='2x'/>
           </div>
         </form>
       </div>
