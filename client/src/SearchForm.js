@@ -33,7 +33,7 @@ class SearchForm extends Component {
         <form className="form-search-city" onSubmit={this.handleSubmit}>
           <div className="search-input">
             <input className="input-city-name" type="text" required="true" value={this.state.city} placeholder="Search a City" onChange={this.handleChange} />
-          <FontAwesome onClick={this.handleSubmit} className="search-button" name='search' size='2x'/>
+            <button className="submit-city-btn"><FontAwesome onClick={this.handleSubmit} className="search-button" name='search'/></button>
           </div>
         </form>
       </div>

@@ -24458,7 +24458,11 @@ var SearchForm = function (_Component) {
             'div',
             { className: 'search-input' },
             _react2.default.createElement('input', { className: 'input-city-name', type: 'text', required: 'true', value: this.state.city, placeholder: 'Search a City', onChange: this.handleChange }),
-            _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleSubmit, className: 'search-button', name: 'search', size: '2x' })
+            _react2.default.createElement(
+              'button',
+              { className: 'submit-city-btn' },
+              _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleSubmit, className: 'search-button', name: 'search' })
+            )
           )
         )
       );
