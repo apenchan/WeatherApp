@@ -29,11 +29,14 @@ class App extends React.Component {
     var params = {
       name: data.location.name,
       regionOrState: data.location.region,
+      currentF: data.current.feelslike_f,      
+      country: data.location.country,
       condition: data.current.condition.text,
       conditionIcon: data.current.condition.icon,
       forecast: data.forecast.forecastday.date,
       forecastText: data.forecast.forecastday[0].day.condition.text,
-      forecastIcon: data.forecast.forecastday[0].day.condition.icon
+      forecastIcon: data.forecast.forecastday[0].day.condition.icon,
+      forecastF: data.forecast.forecastday[0].day.avgtemp_f      
     };
     console.log(data)
     this.setState({weathers: this.state.weathers.concat(params)});

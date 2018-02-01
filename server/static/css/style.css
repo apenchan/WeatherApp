@@ -2,6 +2,10 @@
   font-family: "couture-bld.otf";
   src: url("../fonts/couture-bld.otf");
 }
+@font-face{
+  font-family: "Roboto-Regular.ttf";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
 html, body{
   padding: 0;
   margin: 0;
@@ -44,6 +48,8 @@ html, body{
   height: 20px;
   padding-left: 10px;
   border-radius: 4px;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 13px;
 }
 .submit-city-btn{
   margin-left: -50px;
@@ -53,14 +59,93 @@ html, body{
   background: transparent;
   border: 0;
 }
+.fa-search{
+  font-size: 1.5em;
+}
 .weather-boxes{
   float: left;
   padding: 30px;
   margin: 2%;
   border: solid 2px salmon;
+  background: url("../assests/ant-rozetsky-264641.jpg");
+  background-size: cover;
 }
 .city-name{
   font-size: 20px;
+  color: white;
+  text-align: center;
+  font-family: "couture-bld.otf";
+  padding-bottom: 10px;
+}
+.country-state{
+  position: relative;
+}
+.region-name{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+  position: absolute;
+  margin-left: -16px;
+}
+.country-name{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+  position: absolute;
+  padding-left: 23%; 
+}
+.current-weather{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+  margin-top: 43px;
+  position: relative;
+}
+.current-weather-icon{
+  position: absolute;
+  margin-top: -1px;
+  margin-left: 100px;
+}
+.current-f{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+  position: absolute;
+  margin-top: 27px;
+  margin-left: 175px;
+}
+.forecast{
+  padding-top: 66px;
+  position: relative;
+}
+.future-f-text{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+}
+.future-f-text{
+  padding-bottom: 15px;
+}
+.forecast-text{
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+}
+.forecast-weather-icon{
+  position: absolute;
+  margin-top: 0px;
+  margin-left: 100px;
+}
+.forecast-f{
+  position: absolute;
+  margin-top: 27px;
+  margin-left: 175px;
+  color: white;
+  font-family: "Roboto-Regular.ttf";
+  font-size: 15px;
+}
+.comment-submit-container{
+  margin-top: 60px;
 }
 .comments-scroll{
   overflow: auto;

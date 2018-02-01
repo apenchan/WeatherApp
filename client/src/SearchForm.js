@@ -32,7 +32,7 @@ class SearchForm extends Component {
       <div className="search-weather-container">
         <form className="form-search-city" onSubmit={this.handleSubmit}>
           <div className="search-input">
-            <input className="input-city-name" type="text" required="true" value={this.state.city} placeholder="Search a City" onChange={this.handleChange} />
+            <input className="input-city-name" type="text" required="true" value={this.state.city} placeholder="Search City" onChange={this.handleChange} />
             <button className="submit-city-btn"><FontAwesome onClick={this.handleSubmit} className="search-button" name='search'/></button>
           </div>
         </form>
