@@ -25805,6 +25805,10 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactFontawesome = __webpack_require__(233);
+
+var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -25830,13 +25834,13 @@ var CommentForm = function (_Component) {
   }
 
   _createClass(CommentForm, [{
-    key: "handleChange",
+    key: 'handleChange',
     value: function handleChange(e) {
       console.log(e.target.id);
       this.setState(_defineProperty({}, e.target.id, e.target.value));
     }
   }, {
-    key: "handleSubmit",
+    key: 'handleSubmit',
     value: function handleSubmit(e) {
       // alert("comments button was clicked");
       e.preventDefault();
@@ -25844,20 +25848,20 @@ var CommentForm = function (_Component) {
       this.setState({ text: "", username: "" });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
-        { className: "comment-submit-container" },
-        _react2.default.createElement("textarea", { type: "text", id: "text", value: this.state.text, placeholder: "Add Comment Here", onChange: this.handleChange }),
-        _react2.default.createElement("input", { type: "text", id: "username", value: this.state.username, placeholder: "username", onChange: this.handleChange }),
+        'div',
+        { className: 'comment-submit-container' },
+        _react2.default.createElement('textarea', { className: 'comment-textarea', type: 'text', id: 'text', value: this.state.text, placeholder: 'Add Comment Here', onChange: this.handleChange }),
         _react2.default.createElement(
-          "div",
-          { className: "submit-comment" },
+          'div',
+          { className: 'submit-comment' },
           _react2.default.createElement(
-            "button",
-            { className: "submit-comment", onClick: this.handleSubmit },
-            "Send"
+            'button',
+            { className: 'submit-comment-btn' },
+            _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleSubmit, className: 'fa-paper-plane', name: 'paper-plane', size: '2x' }),
+            'post'
           )
         )
       );

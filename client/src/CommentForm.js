@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome'
 
 class CommentForm extends Component {
   constructor(props) {
@@ -20,10 +21,10 @@ class CommentForm extends Component {
   render() {
     return (
       <div className="comment-submit-container">
-          <textarea type="text" id="text" value={this.state.text} placeholder="Add Comment Here" onChange={this.handleChange} />
-          <input type="text" id="username" value={this.state.username} placeholder="username" onChange={this.handleChange} />
+          <textarea className="comment-textarea" type="text" id="text" value={this.state.text} placeholder="Add Comment Here" onChange={this.handleChange} />
+          {/* <input type="text" id="username" value={this.state.username} placeholder="username" onChange={this.handleChange} /> */}
           <div className="submit-comment">
-            <button className="submit-comment" onClick={this.handleSubmit} >Send</button>
+            <button className="submit-comment-btn"><FontAwesome onClick={this.handleSubmit} className="fa-paper-plane" name="paper-plane" size="2x"/>post</button>
           </div>
       </div>
     )
