@@ -14,6 +14,7 @@ class SearchForm extends Component {
     this.setState({ city: e.target.value });
   }
   handleSubmit(e) {
+    alert("I was clicked")
     e.preventDefault();
     // alert("I was clicked and working");
     var url = `http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=${this.state.city}`;

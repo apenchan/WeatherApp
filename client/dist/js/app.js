@@ -24584,6 +24584,7 @@ var SearchForm = function (_Component) {
     value: function handleSubmit(e) {
       var _this2 = this;
 
+      alert("I was clicked");
       e.preventDefault();
       // alert("I was clicked and working");
       var url = 'http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.city;
@@ -26014,6 +26015,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26025,22 +26028,72 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var MainNav = function (_Component) {
   _inherits(MainNav, _Component);
 
-  function MainNav() {
+  function MainNav(props) {
     _classCallCheck(this, MainNav);
 
-    return _possibleConstructorReturn(this, (MainNav.__proto__ || Object.getPrototypeOf(MainNav)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MainNav.__proto__ || Object.getPrototypeOf(MainNav)).call(this, props));
+
+    _this.state = { show: false };
+    _this.handleToggle = _this.handleToggle.bind(_this);
+    // this.hideToggle = this.hideToggle.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    return _this;
   }
 
   _createClass(MainNav, [{
+    key: "handleToggle",
+    value: function handleToggle() {
+      this.setState(function (prevState) {
+        return {
+          isToggled: !prevState.isToggled
+        };
+      });
+    }
+    // hideToggle(e){
+    //   console.log(e.target.id)
+    //   e.preventDefault(e.target.id)
+    //   this.setState({show: false})
+    // }
+
+  }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       return _react2.default.createElement(
         "div",
-        { className: "app-name" },
+        { className: "main-nav" },
         _react2.default.createElement(
-          "h2",
-          null,
-          "My Weather"
+          "div",
+          { className: "app-name" },
+          _react2.default.createElement(
+            "h2",
+            null,
+            "My Weather"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "dropdown" },
+          _react2.default.createElement(
+            "button",
+            (_React$createElement = { className: "dropdown-btn", type: "button", id: "dropdown-btn", onClick: this.handleToggle }, _defineProperty(_React$createElement, "className", "icon-menu"), _defineProperty(_React$createElement, "name", "bars"), _React$createElement),
+            "button menu"
+          ),
+          this.state.isToggled ? _react2.default.createElement(
+            "ul",
+            null,
+            _react2.default.createElement(
+              "li",
+              null,
+              "test 1"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "test 2"
+            )
+          ) : ''
         )
       );
     }

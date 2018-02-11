@@ -182,4 +182,9 @@ html, body{
 .comment-username{
   font-size: 1em;
 }
-
+li{
+  font-size: 20px;
+}
+.menu-items{
+  background-color: black;
+}
