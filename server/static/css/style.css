@@ -30,6 +30,16 @@ html, body{
   margin-top: -15px;
   float: left;
 }
+.dropdown{
+  margin-left: 94%;
+  margin-top: 12px;
+  position: absolute;
+}
+.dropdown-btn{
+  background: transparent;
+  border: 0;
+  color: white;
+}
 .search-form{
   clear: left;
 }
@@ -64,8 +74,8 @@ html, body{
 }
 .weather-boxes{
   float: left;
-  padding: 36px;
-  margin: 4%;
+  padding: 40px;
+  margin: 2%;
   border: solid 2px #5182b2;
   background: url("../assests/ant-rozetsky-264641.jpg");
   background-size: cover;
@@ -182,9 +192,12 @@ html, body{
 .comment-username{
   font-size: 1em;
 }
-li{
+ul{
+
+}
+/* li{
   font-size: 20px;
 }
 .menu-items{
   background-color: black;
-}
+} */

@@ -1,40 +1,30 @@
-// import React, { Component } from 'react';
-// import FontAwesome from 'react-fontawesome';
+import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
 
-// class MenuBox extends Component{
-//   constructor(props){
-//   super(props);
-//     this.state={show: false};
-//     // this.goToLinks = this.goToLinks.bind(this);
-//     this.showToggle = this.showToggle.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-//   handleChange(){
-//     this.setState({show: true});
-//   }
-//   showToggle(){
-//     this.setState({show: false})
-//   }
-//   render(){
-//     // let menu;
-//     //   if(!this.state.showToggle){
-//     //     menu = "";
-//     //   } else {
-//     //     menu = <div className="menu-items">
-//     //       <ul>
-//     //         <li>test 1</li>
-//     //         <li>test 2</li>
-//     //       </ul>
-//     //     </div>
-//     //   }
-//     return(
-//       <div className="dropdown" onChange={this.handleChange}>
-//         <button className="dropdown-btn" type="button" onClick={this.showToggle} className="icon-menu" name="bars">button menu</button>
-//       </div>
-//     )
+class MenuBox extends Component{
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+  handleToggle() {
+    this.setState(prevState => ({
+      isToggled: !prevState.isToggled
+    }));
+  }
+  render() {
+    return (
 
-//   }
+        <div className="dropdown">
+          <button className="dropdown-btn" type="button" ><FontAwesome onClick={this.handleToggle} className="icon-menu" name="bars" size="3x" /></button>
+          {this.state.isToggled ?  <ul>
+              <li>test 1</li>
+              <li>test 2</li>
+            </ul> : ''} 
+            {/* this will need to change to props. for now, its listed here */}
+        </div>
+    )
+  }
+}
 
-// }
-
-// export default MenuBox;
+export default MenuBox;

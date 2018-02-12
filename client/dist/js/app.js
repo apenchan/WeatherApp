@@ -24444,21 +24444,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <img style={{width:300}}
-//           src="https://raw.githubusercontent.com/webpack-contrib/awesome-webpack/master/media/awesome_webpack_branding.png"
-//           alt="Webpack"/>
-//         <br/>
-//         Hello world!!
-//       </div>
-//     );
-//   }
-// }
-
-
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -24584,7 +24569,6 @@ var SearchForm = function (_Component) {
     value: function handleSubmit(e) {
       var _this2 = this;
 
-      alert("I was clicked");
       e.preventDefault();
       // alert("I was clicked and working");
       var url = 'http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.city;
@@ -26013,9 +25997,11 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _MenuBox = __webpack_require__(269);
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var _MenuBox2 = _interopRequireDefault(_MenuBox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26023,78 +26009,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import MenuBox from './MenuBox';
-
 var MainNav = function (_Component) {
   _inherits(MainNav, _Component);
 
-  function MainNav(props) {
+  function MainNav() {
     _classCallCheck(this, MainNav);
 
-    var _this = _possibleConstructorReturn(this, (MainNav.__proto__ || Object.getPrototypeOf(MainNav)).call(this, props));
-
-    _this.state = { show: false };
-    _this.handleToggle = _this.handleToggle.bind(_this);
-    // this.hideToggle = this.hideToggle.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    return _this;
+    return _possibleConstructorReturn(this, (MainNav.__proto__ || Object.getPrototypeOf(MainNav)).apply(this, arguments));
   }
 
   _createClass(MainNav, [{
-    key: "handleToggle",
-    value: function handleToggle() {
-      this.setState(function (prevState) {
-        return {
-          isToggled: !prevState.isToggled
-        };
-      });
-    }
-    // hideToggle(e){
-    //   console.log(e.target.id)
-    //   e.preventDefault(e.target.id)
-    //   this.setState({show: false})
-    // }
-
-  }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      var _React$createElement;
-
       return _react2.default.createElement(
-        "div",
-        { className: "main-nav" },
+        'div',
+        { className: 'main-nav' },
         _react2.default.createElement(
-          "div",
-          { className: "app-name" },
+          'div',
+          { className: 'app-name' },
           _react2.default.createElement(
-            "h2",
+            'h2',
             null,
-            "My Weather"
+            'My Weather'
           )
         ),
-        _react2.default.createElement(
-          "div",
-          { className: "dropdown" },
-          _react2.default.createElement(
-            "button",
-            (_React$createElement = { className: "dropdown-btn", type: "button", id: "dropdown-btn", onClick: this.handleToggle }, _defineProperty(_React$createElement, "className", "icon-menu"), _defineProperty(_React$createElement, "name", "bars"), _React$createElement),
-            "button menu"
-          ),
-          this.state.isToggled ? _react2.default.createElement(
-            "ul",
-            null,
-            _react2.default.createElement(
-              "li",
-              null,
-              "test 1"
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              "test 2"
-            )
-          ) : ''
-        )
+        _react2.default.createElement(_MenuBox2.default, null)
       );
     }
   }]);
@@ -29184,6 +29123,91 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
     return targetComponent;
 };
 
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactFontawesome = __webpack_require__(102);
+
+var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MenuBox = function (_Component) {
+  _inherits(MenuBox, _Component);
+
+  function MenuBox(props) {
+    _classCallCheck(this, MenuBox);
+
+    var _this = _possibleConstructorReturn(this, (MenuBox.__proto__ || Object.getPrototypeOf(MenuBox)).call(this, props));
+
+    _this.state = { show: false };
+    _this.handleToggle = _this.handleToggle.bind(_this);
+    return _this;
+  }
+
+  _createClass(MenuBox, [{
+    key: 'handleToggle',
+    value: function handleToggle() {
+      this.setState(function (prevState) {
+        return {
+          isToggled: !prevState.isToggled
+        };
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'dropdown' },
+        _react2.default.createElement(
+          'button',
+          { className: 'dropdown-btn', type: 'button' },
+          _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleToggle, className: 'icon-menu', name: 'bars', size: '3x' })
+        ),
+        this.state.isToggled ? _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            'test 1'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'test 2'
+          )
+        ) : ''
+      );
+    }
+  }]);
+
+  return MenuBox;
+}(_react.Component);
+
+exports.default = MenuBox;
 
 /***/ })
 /******/ ]);
