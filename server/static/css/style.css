@@ -11,7 +11,6 @@ html, body{
   margin: 0;
 }
 .main-container{
-  overflow: hidden;
   width: 100%;
 }
 .main-nav{
@@ -33,12 +32,32 @@ html, body{
 .dropdown{
   margin-left: 94%;
   margin-top: 12px;
-  position: absolute;
+  position: relative;
 }
 .dropdown-btn{
   background: transparent;
   border: 0;
   color: white;
+  width: 55px;
+  position: absolute;
+}
+.menu-list-ul{
+  list-style-type: none;
+  color: red;
+  display: inline-block;
+  font-family: "Roboto-Regular.ttf";
+  position: relative;
+  padding: 0;
+  padding-top: 8px;
+}
+.menu-list-li{
+  text-align: left;
+  display: block;
+  font-size: 20px;
+  padding: 10px;
+}
+ul.dropdown-btn{
+  display: inline-block;
 }
 .search-form{
   clear: left;

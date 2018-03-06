@@ -26109,9 +26109,9 @@ var MenuBox = function (_Component) {
         _react2.default.createElement(
           'button',
           { className: 'dropdown-btn', type: 'button' },
-          _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleToggle, className: 'icon-menu', name: 'bars', size: '3x' })
-        ),
-        this.state.isToggled ? _react2.default.createElement(_MenuListBox2.default, null) : ''
+          _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleToggle, className: 'icon-menu', name: 'bars', size: '3x' }),
+          this.state.isToggled ? _react2.default.createElement(_MenuListBox2.default, null) : ''
+        )
       );
     }
   }]);

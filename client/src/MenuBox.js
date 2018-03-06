@@ -17,8 +17,9 @@ class MenuBox extends Component{
     return (
 
         <div className="dropdown">
-          <button className="dropdown-btn" type="button" ><FontAwesome onClick={this.handleToggle} className="icon-menu" name="bars" size="3x" /></button>
+          <button className="dropdown-btn" type="button" ><FontAwesome onClick={this.handleToggle} className="icon-menu" name="bars" size="3x" />
           {this.state.isToggled ?  <MenuListBox />: ''} 
+          </button>
         </div>
     )
   }
