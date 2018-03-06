@@ -4,8 +4,10 @@ const app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
-var authRouting = require("./server/routing/authRouting.js");
-var User = require('./server/models/userModel.js')
+// var authRouting = require("./server/routing/authRouting.js");//joy. get to figure out why this page doesnt work later :/
+var User = require('./server/models/userModel.js');
+var City = require('./server/models/cityModel.js'); 
+var Comment = require('./server/models/commentModel.js');
 var expressSession = require('express-session');
 var db = process.env.MONGODB_URI || "mongodb://localhost/savedweatherapp";
 mongoose.connect(db);
@@ -13,12 +15,12 @@ mongoose.connect(db);
 app.use(express.static('./server/static/'));
 app.use(express.static('./node_modules'));
 app.use(express.static('./client/dist/'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(passport.initialize());
 
 
-app.use(expressSession({ secret: 'thisIsASecret', resave: false, saveUninitialized: false }));
+
+app.use(expressSession({ secret: 'thisIsASecret', resave: false, saveUninitialized: false }));//secret will be change to process.env later
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -29,6 +31,11 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
+
+app.get('/test', function(req, res){
+	res.send('at test')
+	console.log("i get to test")
+})
 
 app.post('/register', function (req, res) {
   User.create(req.body, function (err, user) {
@@ -41,7 +48,7 @@ app.post('/register', function (req, res) {
   });
 });
 
-//Handle browser refresh by redirecting to index html
+// app.use("/auth", authRouting);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
 })
