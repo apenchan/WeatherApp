@@ -13,8 +13,8 @@ var db = process.env.MONGODB_URI || "mongodb://localhost/savedweatherapp";
 mongoose.connect(db);
 
 app.use(express.static('./server/static/'));
-app.use(express.static('./node_modules'));
 app.use(express.static('./client/dist/'));
+app.use(express.static('./node_modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

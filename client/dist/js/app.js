@@ -26078,6 +26078,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import assests from '../../server/static/assests/x-icon.png'
+// import xImage from '../../x-icon.png';
+
 var MenuBox = function (_Component) {
   _inherits(MenuBox, _Component);
 
@@ -26108,8 +26111,8 @@ var MenuBox = function (_Component) {
         { className: 'dropdown' },
         _react2.default.createElement(
           'button',
-          { className: 'dropdown-btn', type: 'button' },
-          _react2.default.createElement(_reactFontawesome2.default, { onClick: this.handleToggle, className: 'icon-menu', name: 'bars', size: '3x' }),
+          { className: 'dropdown-btn', type: 'button', onClick: this.handleToggle },
+          this.state.isToggled ? _react2.default.createElement(_reactFontawesome2.default, { className: 'x-icon', name: 'times', size: '3x' }) : _react2.default.createElement(_reactFontawesome2.default, { className: 'icon-menu', name: 'bars', size: '3x' }),
           this.state.isToggled ? _react2.default.createElement(_MenuListBox2.default, null) : ''
         )
       );
