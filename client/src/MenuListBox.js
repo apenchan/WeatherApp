@@ -6,7 +6,8 @@ class MenuListBox extends Component{
     return(
       <ul className="menu-list-ul">
         <li className="menu-list-li">Login</li>
-        <li className="menu-list-li">Edit</li>
+        <li className="menu-list-li">Create Account</li>
+        <li className="menu-list-li">Edit Weather List</li>
       </ul>
     )
   }

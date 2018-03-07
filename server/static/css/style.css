@@ -12,10 +12,12 @@ html, body{
 }
 .main-container{
   width: 100%;
+  height: 100vh;
 }
 .main-nav{
   position: relative;
   height: 55px;
+  width: 100%;
   padding: 2px;
   background-color: #7EB9F4;
 }
@@ -30,7 +32,7 @@ html, body{
   float: left;
 }
 .dropdown{
-  margin-left: 94%;
+  margin-left: 90%;
   margin-top: 12px;
   position: relative;
 }
@@ -38,8 +40,15 @@ html, body{
   background: transparent;
   border: 0;
   color: white;
-  width: 55px;
+  width: 145px;
   position: absolute;
+}
+.icon-menu{
+  -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease;  
+  transition: all 2s ease;
 }
 .menu-list-ul{
   list-style-type: none;
@@ -51,9 +60,9 @@ html, body{
   padding-top: 8px;
 }
 .menu-list-li{
-  text-align: left;
+  text-align: center;
   display: block;
-  font-size: 20px;
+  font-size: 15px;
   padding: 10px;
 }
 ul.dropdown-btn{

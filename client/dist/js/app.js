@@ -24393,15 +24393,16 @@ var _reactRouterDom = __webpack_require__(103);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Routes = function Routes() {
-    return _react2.default.createElement(
-        'div',
-        { className: 'container' },
+    return (
+        // <div className="container">
         _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
             _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: '/', component: _2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '*', component: _4.default })
         )
+        // </div>
+
     );
 };
 
@@ -26174,7 +26175,12 @@ var MenuListBox = function (_Component) {
         _react2.default.createElement(
           "li",
           { className: "menu-list-li" },
-          "Edit"
+          "Create Account"
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "menu-list-li" },
+          "Edit Weather List"
         )
       );
     }
