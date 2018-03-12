@@ -4,6 +4,8 @@ const app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
+var auth = require('./controllers/auth.js');
+var session = require('express-session');
 // var authRouting = require("./server/routing/authRouting.js");//joy. get to figure out why this page doesnt work later :/
 var User = require('./server/models/userModel.js');
 var City = require('./server/models/cityModel.js'); 
@@ -14,39 +16,21 @@ mongoose.connect(db);
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+app.use(express.static('./controllers'));
 app.use(express.static('./node_modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-
-
-app.use(expressSession({ secret: 'thisIsASecret', resave: false, saveUninitialized: false }));//secret will be change to process.env later
+app.use(expressSession({ secret: 'thisIsASecret', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(session({
+  secret: 'anystringoftext',
+  saveUninitialized: true,
+  resave: true
+  }));
 
-passport.serializeUser(function (user, done) {
-  done(null, user.username);
-});
-
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
-app.get('/test', function(req, res){
-	res.send('at test')
-	console.log("i get to test")
-})
-
-app.post('/register', function (req, res) {
-  User.create(req.body, function (err, user) {
-    if (err) {
-      console.log(err)
-      res.status(500).end();
-    }
-    console.log(user);
-    res.send(user.username);
-  });
-});
+var auth = require('./controllers/auth.js');
+app.use('/auth', auth);
 
 // app.use("/auth", authRouting);
 app.get('/*', (req, res) => {
