@@ -27,11 +27,11 @@ router.post('/register', function (req, res) {
 router.post('/login', passport.authenticate('local', { session: false }), function(req, res, next) {
 	console.log('CAN YOU HEAR ME??');
   console.log('==========================');
-	console.log('req.body: ' + req.body);
+	console.log('req.body: ' + req.user.username);
   // console.log('USER:' + req.user.email);
 	console.log('==========================');
 
-	var token = jwt.sign(req.user, process.env.JWT_SECRET, {
+	var token = jwt.sign({user: req.user.username}, process.env.JWT_SECRET, {
 		expiresIn: 1400
 	});
 

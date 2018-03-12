@@ -6,6 +6,7 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var JwtOpts = {};
 
+var util = require("util");
 JwtOpts.jwtFromRequest = function(req) {
   var token = null;
   if (req && req.cookies) {
