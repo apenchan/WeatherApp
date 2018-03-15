@@ -16,8 +16,8 @@ class SearchForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     // alert("I was clicked and working");
-    var cityZip = `http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=${this.state.zip}`
-    var cityName = `http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=${this.state.city}`;
+    var cityZip = `https://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=${this.state.zip}`
+    var cityName = `https://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=${this.state.city}`;
     axios.get(cityName, cityZip)
     .then(response => {
         //Use the response here to update
