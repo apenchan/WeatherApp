@@ -26273,18 +26273,12 @@ var MenuListBox = function (_Component) {
         _react2.default.createElement(
           'li',
           { className: 'menu-list-li' },
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/' }),
-          'Login'
+          'Sign in coming soon!'
         ),
         _react2.default.createElement(
           'li',
           { className: 'menu-list-li' },
-          'Create Account'
-        ),
-        _react2.default.createElement(
-          'li',
-          { className: 'menu-list-li' },
-          'Edit Weather List'
+          'Save all your cities and comments soon!'
         )
       );
     }
