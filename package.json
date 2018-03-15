@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.17.1",
     "babel-core": "^6.25.0",
