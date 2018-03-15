@@ -13,6 +13,7 @@ var Comment = require('./server/models/commentModel.js');
 var expressSession = require('express-session');
 var db = process.env.MONGODB_URI || "mongodb://localhost/savedweatherapp";
 mongoose.connect(db);
+var port = process.env.PORT || 3000;
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
@@ -33,6 +34,5 @@ app.get('/*', (req, res) => {
 
 
 // start the server
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
-});
+app.listen(port);
+console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000')
