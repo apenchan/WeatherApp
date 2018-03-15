@@ -27,6 +27,11 @@ app.use(passport.session());
 var auth = require('./controllers/auth.js');
 app.use('/auth', auth);
 
+app.get("/currentUser", function(req, res){
+  console.log(req)
+  res.send("yoo")
+})
+
 // app.use("/auth", authRouting);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))

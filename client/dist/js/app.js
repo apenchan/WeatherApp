@@ -11918,7 +11918,7 @@ var LoginForm = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
 
-    _this.state({ username: '', password: '' });
+    _this.state = { username: '', password: '', loggedIn: sessionStorage.getItem('jwt') != undefined };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
@@ -11936,7 +11936,7 @@ var LoginForm = function (_Component) {
       var _this2 = this;
 
       e.preventDefault();
-      _axios2.default.post("/login", {
+      _axios2.default.post("/auth/login", {
         username: this.state.username,
         password: this.state.password
       }).then(function (response) {
@@ -11958,8 +11958,12 @@ var LoginForm = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'login-username' },
-          _react2.default.createElement('input', { type: 'text', value: this.state.username, required: 'true', placeholder: 'Username', onChange: this.handleChange }),
-          _react2.default.createElement('input', { type: 'password', value: this.state.password, required: 'true', placeholder: 'Password', onChange: this.handleChange })
+          _react2.default.createElement(
+            'form',
+            null,
+            _react2.default.createElement('input', { type: 'text', value: this.state.username, required: 'true', placeholder: 'Username', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'password', value: this.state.password, required: 'true', placeholder: 'Password', onChange: this.handleChange })
+          )
         )
       );
     }
@@ -24502,9 +24506,9 @@ var Routes = function Routes() {
         _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { name: 'home', exact: true, path: '/', component: _2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '*', component: _4.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { name: 'login', component: _LoginForm2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { name: 'homepage', exact: true, path: '/', component: _2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { name: 'login', component: _LoginForm2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { component: _4.default })
         )
     );
 };
@@ -24528,17 +24532,19 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SearchForm = __webpack_require__(216);
+var _axios = __webpack_require__(99);
 
-var _SearchForm2 = _interopRequireDefault(_SearchForm);
+var _axios2 = _interopRequireDefault(_axios);
 
-var _WeatherListBox = __webpack_require__(237);
+var _Homepage = __webpack_require__(272);
 
-var _WeatherListBox2 = _interopRequireDefault(_WeatherListBox);
+var _Homepage2 = _interopRequireDefault(_Homepage);
 
-var _MainNav = __webpack_require__(242);
+var _LoginForm = __webpack_require__(105);
 
-var _MainNav2 = _interopRequireDefault(_MainNav);
+var _LoginForm2 = _interopRequireDefault(_LoginForm);
+
+var _reactRouterDom = __webpack_require__(39);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24551,61 +24557,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App(props) {
+  function App() {
     _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-    _this.state = { weathers: [] };
-    // this.state={comments: []};
-    _this.searchCity = _this.searchCity.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
   }
 
   _createClass(App, [{
-    key: 'searchCity',
-    value: function searchCity(data) {
-      var params = {
-        name: data.location.name,
-        regionOrState: data.location.region,
-        currentF: data.current.feelslike_f,
-        country: data.location.country,
-        condition: data.current.condition.text,
-        conditionIcon: data.current.condition.icon,
-        forecast: data.forecast.forecastday.date,
-        forecastText: data.forecast.forecastday[0].day.condition.text,
-        forecastIcon: data.forecast.forecastday[0].day.condition.icon,
-        forecastF: data.forecast.forecastday[0].day.avgtemp_f
-      };
-      console.log(data);
-      this.setState({ weathers: this.state.weathers.concat(params) });
-    }
-    // addComments(){
-    //   this.props.addComments(this.state);
-    //   this.setState({text: "", username: ""});
-    // }
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var jwt = sessionStorage.jwt;
+      var _props = this.props,
+          auth = _props.auth,
+          history = _props.history,
+          setNextRoute = _props.setNextRoute;
 
+      if (!jwt) {
+        history.push('/login');
+      }
+      _axios2.default.get("http://localhost:3000/currentuser", {
+        headers: {
+          "Authorization": "Bearer " + jwt
+        }
+      }).then(function (response) {
+        console.log(response);
+      });
+    }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'main-container' },
-        _react2.default.createElement(
-          'div',
-          { className: 'main-nav' },
-          _react2.default.createElement(_MainNav2.default, null)
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'search-form' },
-          _react2.default.createElement(_SearchForm2.default, { searchCity: this.searchCity })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row weather-displays' },
-          _react2.default.createElement(_WeatherListBox2.default, { weathers: this.state.weathers })
-        )
+        null,
+        _react2.default.createElement(_Homepage2.default, null)
       );
     }
   }]);
@@ -24614,6 +24598,59 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+// import React from 'react';
+// import SearchForm from './SearchForm'
+// import WeatherListBox from './WeatherListBox'
+// import MainNav from './MainNav'
+// import LoginForm from './LoginForm'
+// import { Switch, Route, Router, Redirect, browserHistory, history } from 'react-router-dom';
+
+// class App extends React.Component {
+//   constructor(props){
+//     super(props);
+//     this.state={weathers: [] };
+//     // this.state={comments: []};
+//     this.searchCity = this.searchCity.bind(this);
+//   }
+//   searchCity(data){
+//     var params = {
+//       name: data.location.name,
+//       regionOrState: data.location.region,
+//       currentF: data.current.feelslike_f,      
+//       country: data.location.country,
+//       condition: data.current.condition.text,
+//       conditionIcon: data.current.condition.icon,
+//       forecast: data.forecast.forecastday.date,
+//       forecastText: data.forecast.forecastday[0].day.condition.text,
+//       forecastIcon: data.forecast.forecastday[0].day.condition.icon,
+//       forecastF: data.forecast.forecastday[0].day.avgtemp_f      
+//     };
+//     console.log(data)
+//     this.setState({weathers: this.state.weathers.concat(params)});
+//   }
+//   // addComments(){
+//   //   this.props.addComments(this.state);
+//   //   this.setState({text: "", username: ""});
+//   // }
+//   render() {
+//     return (
+//       <div className="main-container">
+//       <div className="main-nav">
+//         <MainNav />
+//       </div>
+//       <div className="search-form">
+//         <SearchForm searchCity={this.searchCity}/>
+//       </div>
+//       <div className="row weather-displays">
+//         <WeatherListBox weathers={this.state.weathers}/>
+//       </div>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
 
 /***/ }),
 /* 216 */
@@ -24675,8 +24712,8 @@ var SearchForm = function (_Component) {
 
       e.preventDefault();
       // alert("I was clicked and working");
-      var cityZip = 'http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.zip;
-      var cityName = 'http://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.city;
+      var cityZip = 'https://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.zip;
+      var cityName = 'https://api.apixu.com/v1/forecast.json?key=1b7f877fdc1341418ec85603170111&q=' + this.state.city;
       _axios2.default.get(cityName, cityZip).then(function (response) {
         //Use the response here to update
         _this2.props.searchCity(response.data);
@@ -26271,14 +26308,9 @@ var MenuListBox = function (_Component) {
         'ul',
         { className: 'menu-list-ul' },
         _react2.default.createElement(
-          'li',
-          { className: 'menu-list-li' },
-          'Sign in coming soon!'
-        ),
-        _react2.default.createElement(
-          'li',
-          { className: 'menu-list-li' },
-          'Save all your cities and comments soon!'
+          _reactRouterDom.Link,
+          { to: '/login' },
+          'Login'
         )
       );
     }
@@ -29369,6 +29401,116 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SearchForm = __webpack_require__(216);
+
+var _SearchForm2 = _interopRequireDefault(_SearchForm);
+
+var _WeatherListBox = __webpack_require__(237);
+
+var _WeatherListBox2 = _interopRequireDefault(_WeatherListBox);
+
+var _MainNav = __webpack_require__(242);
+
+var _MainNav2 = _interopRequireDefault(_MainNav);
+
+var _LoginForm = __webpack_require__(105);
+
+var _LoginForm2 = _interopRequireDefault(_LoginForm);
+
+var _reactRouterDom = __webpack_require__(39);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Homepage = function (_React$Component) {
+  _inherits(Homepage, _React$Component);
+
+  function Homepage(props) {
+    _classCallCheck(this, Homepage);
+
+    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
+
+    _this.state = { weathers: [] };
+    // this.state={comments: []};
+    _this.searchCity = _this.searchCity.bind(_this);
+    return _this;
+  }
+
+  _createClass(Homepage, [{
+    key: 'searchCity',
+    value: function searchCity(data) {
+      var params = {
+        name: data.location.name,
+        regionOrState: data.location.region,
+        currentF: data.current.feelslike_f,
+        country: data.location.country,
+        condition: data.current.condition.text,
+        conditionIcon: data.current.condition.icon,
+        forecast: data.forecast.forecastday.date,
+        forecastText: data.forecast.forecastday[0].day.condition.text,
+        forecastIcon: data.forecast.forecastday[0].day.condition.icon,
+        forecastF: data.forecast.forecastday[0].day.avgtemp_f
+      };
+      console.log(data);
+      this.setState({ weathers: this.state.weathers.concat(params) });
+    }
+    // addComments(){
+    //   this.props.addComments(this.state);
+    //   this.setState({text: "", username: ""});
+    // }
+
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'main-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'main-nav' },
+          _react2.default.createElement(_MainNav2.default, null)
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'search-form' },
+          _react2.default.createElement(_SearchForm2.default, { searchCity: this.searchCity })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row weather-displays' },
+          _react2.default.createElement(_WeatherListBox2.default, { weathers: this.state.weathers })
+        )
+      );
+    }
+  }]);
+
+  return Homepage;
+}(_react2.default.Component);
+
+exports.default = Homepage;
 
 /***/ })
 /******/ ]);

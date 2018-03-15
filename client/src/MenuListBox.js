@@ -8,10 +8,8 @@ class MenuListBox extends Component{
   render(){
     return(
       <ul className="menu-list-ul">
-        <li className="menu-list-li">Sign in coming soon!</li>
-        <li className="menu-list-li">Save all your cities and comments soon!</li>
-        {/* <li className="menu-list-li">Login</li>
-        <li className="menu-list-li">Create Account</li>
+        <Link to={'/login'}>Login</Link>
+        {/* <li className="menu-list-li">Create Account</li>
         <li className="menu-list-li">Edit Weather List</li> */}
       </ul>
     )
