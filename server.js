@@ -11,8 +11,8 @@ var User = require('./server/models/userModel.js');
 var City = require('./server/models/cityModel.js'); 
 var Comment = require('./server/models/commentModel.js');
 var expressSession = require('express-session');
-var db = process.env.MONGODB_URI || "mongodb://localhost/savedweatherapp";
-mongoose.connect(db);
+// var db = process.env.MONGODB_URI || "mongodb://localhost/savedweatherapp";
+// mongoose.connect(db);
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
