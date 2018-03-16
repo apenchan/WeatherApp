@@ -29,7 +29,7 @@ app.use('/auth', auth);
 
 app.get("/currentUser", function(req, res){
   console.log(req)
-  res.send("yoo")
+  res.send(user.username)
 })
 
 // app.use("/auth", authRouting);

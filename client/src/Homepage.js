@@ -28,10 +28,6 @@ class Homepage extends React.Component {
     console.log(data)
     this.setState({weathers: this.state.weathers.concat(params)});
   }
-  // addComments(){
-  //   this.props.addComments(this.state);
-  //   this.setState({text: "", username: ""});
-  // }
   render() {
     return (
       <div className="main-container">
